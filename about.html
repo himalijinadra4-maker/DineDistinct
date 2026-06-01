@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About – DineDistinct</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --gold:#c9a84c; --gold-light:#e8c97a; --dark:#0a0a0a; --dark2:#111111; --dark3:#1a1a1a; --cream:#f5f0e8; --text-muted:#888; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--dark); color:var(--cream); font-family:'Lato',sans-serif; font-weight:300; }
+    nav { position:fixed; top:0; width:100%; z-index:999; padding:22px 60px; display:flex; align-items:center; justify-content:space-between; background:rgba(10,10,10,0.98); border-bottom:1px solid rgba(201,168,76,0.2); }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--gold); letter-spacing:2px; text-decoration:none; }
+    .nav-links { display:flex; gap:36px; list-style:none; }
+    .nav-links a { color:var(--cream); text-decoration:none; font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; transition:color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--gold); }
+    .nav-reserve { background:transparent; border:1px solid var(--gold); color:var(--gold); padding:10px 28px; font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.3s; font-family:'Lato',sans-serif; }
+    .nav-reserve:hover { background:var(--gold); color:var(--dark); }
+
+    /* HERO */
+    .about-hero {
+      height:65vh; position:relative; display:flex; align-items:center; justify-content:center;
+      background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400') center/cover no-repeat;
+    }
+    .about-hero::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.72); }
+    .about-hero-content { position:relative; z-index:2; text-align:center; padding-top:80px; }
+    .tag { font-size:0.65rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+    .about-hero-content h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem); }
+    .about-hero-content p { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:rgba(245,240,232,0.75); margin-top:14px; }
+
+    /* STORY */
+    .story { padding:100px 60px; background:var(--dark2); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .story-img { position:relative; }
+    .story-img img { width:100%; display:block; }
+    .story-img::before { content:''; position:absolute; top:-18px; right:-18px; bottom:18px; left:18px; border:1px solid rgba(201,168,76,0.3); z-index:0; }
+    .story-img img { position:relative; z-index:1; }
+    .story-text .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); margin-bottom:18px; }
+    .gold-line { width:50px; height:1px; background:var(--gold); margin-bottom:28px; }
+    .story-text p { font-family:'Cormorant Garamond',serif; font-size:1.1rem; line-height:1.9; color:rgba(245,240,232,0.8); margin-bottom:18px; }
+
+    /* VALUES */
+    .values { padding:100px 60px; background:var(--dark3); text-align:center; }
+    .values-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:30px; max-width:1100px; margin:50px auto 0; }
+    .value-card { padding:40px 24px; border:1px solid rgba(201,168,76,0.12); transition:border-color 0.3s; }
+    .value-card:hover { border-color:rgba(201,168,76,0.4); }
+    .value-icon { font-size:2rem; color:var(--gold); margin-bottom:18px; font-family:'Playfair Display',serif; font-style:italic; }
+    .value-card h4 { font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:12px; }
+    .value-card p { font-size:0.85rem; color:var(--text-muted); line-height:1.7; }
+
+    /* CHEF */
+    .chef-section { padding:100px 60px; background:var(--dark2); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .chef-text .tag { margin-bottom:10px; }
+    .chef-text h2 { font-family:'Playfair Display',serif; font-size:2.2rem; margin-bottom:6px; }
+    .chef-name-sub { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--text-muted); letter-spacing:1px; margin-bottom:24px; font-style:italic; }
+    .chef-text p { font-family:'Cormorant Garamond',serif; font-size:1.08rem; line-height:1.9; color:rgba(245,240,232,0.8); margin-bottom:14px; }
+    .chef-sig { font-family:'Playfair Display',serif; font-style:italic; font-size:1.4rem; color:var(--gold); margin-top:20px; }
+    .chef-img img { width:100%; filter:brightness(0.85); }
+
+    /* TEAM */
+    .team { padding:100px 60px; background:var(--dark); text-align:center; }
+    .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; max-width:900px; margin:50px auto 0; }
+    .team-card { background:var(--dark3); border:1px solid rgba(201,168,76,0.1); overflow:hidden; transition:border-color 0.3s; }
+    .team-card:hover { border-color:rgba(201,168,76,0.35); }
+    .team-card img { width:100%; height:220px; object-fit:cover; object-position:top; display:block; filter:brightness(0.8) grayscale(20%); transition:filter 0.4s; }
+    .team-card:hover img { filter:brightness(0.9) grayscale(0); }
+    .team-card-info { padding:24px 20px; }
+    .team-card-info h4 { font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:4px; }
+    .team-card-info p { font-size:0.75rem; color:var(--gold); letter-spacing:2px; text-transform:uppercase; }
+
+    /* AWARDS */
+    .awards { padding:80px 60px; background:var(--gold); text-align:center; }
+    .awards h2 { font-family:'Playfair Display',serif; font-size:2rem; color:var(--dark); margin-bottom:50px; }
+    .awards-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; max-width:1000px; margin:0 auto; }
+    .award-item h4 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--dark); margin-bottom:6px; }
+    .award-item p { font-size:0.75rem; color:rgba(10,10,10,0.65); letter-spacing:1.5px; text-transform:uppercase; }
+
+    /* MODAL */
+    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:2000; display:none; align-items:center; justify-content:center; }
+    .modal-overlay.active { display:flex; }
+    .modal-box { background:var(--dark3); border:1px solid rgba(201,168,76,0.3); width:520px; max-width:95%; padding:50px 44px; position:relative; animation:modalIn 0.4s ease; }
+    @keyframes modalIn { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+    .modal-close { position:absolute; top:18px; right:22px; background:none; border:none; color:var(--text-muted); font-size:1.4rem; cursor:pointer; }
+    .modal-close:hover { color:var(--gold); }
+    .modal-box h3 { font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:8px; }
+    .section-tag-m { font-size:0.65rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+    .gl { width:50px; height:1px; background:var(--gold); margin-bottom:28px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .form-group { margin-bottom:18px; }
+    .form-group label { display:block; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
+    .form-group input, .form-group select, .form-group textarea { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(201,168,76,0.2); color:var(--cream); padding:12px 16px; font-family:'Lato',sans-serif; font-size:0.9rem; outline:none; transition:border-color 0.3s; }
+    .form-group input:focus, .form-group select:focus { border-color:var(--gold); }
+    .form-group select option { background:var(--dark3); }
+    .btn-gold { background:var(--gold); color:var(--dark); padding:15px 42px; font-size:0.78rem; letter-spacing:2.5px; text-transform:uppercase; border:none; cursor:pointer; font-family:'Lato',sans-serif; transition:all 0.3s; }
+    .btn-gold:hover { background:var(--gold-light); }
+
+    footer { background:#050505; padding:40px 60px; border-top:1px solid rgba(201,168,76,0.15); display:flex; justify-content:space-between; align-items:center; }
+    footer p { font-size:0.78rem; color:var(--text-muted); }
+
+    @media(max-width:900px){
+      nav { padding:18px 24px; }
+      .nav-links { display:none; }
+      .story, .chef-section { grid-template-columns:1fr; gap:40px; padding:60px 24px; }
+      .values-grid { grid-template-columns:1fr 1fr; }
+      .team-grid { grid-template-columns:1fr; }
+      .awards-grid { grid-template-columns:1fr 1fr; }
+      .values { padding:60px 24px; }
+      .team { padding:60px 24px; }
+      .awards { padding:60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">DineDistinct</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-reserve" onclick="openModal()">Reserve a Table</button>
+</nav>
+
+<div class="about-hero">
+  <div class="about-hero-content">
+    <p class="tag">Our Heritage</p>
+    <h1>The Story of DineDistinct</h1>
+    <p>Where every evening is a masterpiece in the making</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-img">
+    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700" alt="Restaurant Interior"/>
+  </div>
+  <div class="story-text">
+    <p class="tag">Est. 2019 · Ahmedabad, Gujarat</p>
+    <h2 class="section-title">Born from Passion,<br>Refined by Time</h2>
+    <div class="gold-line"></div>
+    <p>DineDistinct was conceived in 2019 with a singular vision: to create a dining experience that transcends the ordinary and becomes a cherished memory. Founded in the heart of Ahmedabad, Gujarat, the restaurant draws inspiration from the city's rich cultural tapestry while reaching outward toward global culinary traditions.</p>
+    <p>What began as a small 40-cover dining room has grown into Gujarat's most celebrated contemporary fusion destination — yet we have never lost the intimate, handcrafted spirit that defined our first evening of service.</p>
+    <p>Every element of DineDistinct — from the architecture of each dish to the curvature of each chair — has been chosen with deliberate care. We do not simply serve food. We compose experiences.</p>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <p class="tag">What We Stand For</p>
+  <h2 style="font-family:'Playfair Display',serif; font-size:2.4rem; margin-bottom:12px;">Our Core Values</h2>
+  <div class="gold-line" style="margin:0 auto;"></div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">I.</div>
+      <h4>Artisan Integrity</h4>
+      <p>Every component of every dish is sourced, prepared, and plated with absolute honesty and craftsmanship.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">II.</div>
+      <h4>Cultural Respect</h4>
+      <p>We honour the traditions we draw from, blending global flavors without appropriating or diminishing heritage.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">III.</div>
+      <h4>Guest First</h4>
+      <p>Every decision — from menu design to table spacing — is made through the lens of our guest's experience.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">IV.</div>
+      <h4>Sustainable Luxury</h4>
+      <p>We source responsibly, reduce waste, and work with local farmers to ensure our indulgence leaves a lighter footprint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHEF -->
+<section class="chef-section">
+  <div class="chef-text">
+    <p class="tag">The Culinary Mind</p>
+    <h2>Chef Arjun Mehta</h2>
+    <p class="chef-name-sub">Executive Chef & Co-Founder</p>
+    <div class="gold-line"></div>
+    <p>Trained at the Institute of Hotel Management Ahmedabad and refined through stages in Paris and Tokyo, Chef Arjun Mehta brings a singular perspective to the kitchen — one that sees no contradiction between a Gujarati dal dhokli and a French beurre blanc.</p>
+    <p>His philosophy is simple: the finest ingredient, treated with respect, tells its own story. The chef's role is merely to listen, and then to translate. Over fifteen years of cooking, Chef Arjun has developed a vocabulary that speaks across cultures and surprises even the most seasoned palate.</p>
+    <p class="chef-sig">— Arjun Mehta</p>
+  </div>
+  <div class="chef-img">
+    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=700" alt="Chef Arjun Mehta"/>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <p class="tag">The People Behind the Magic</p>
+  <h2 style="font-family:'Playfair Display',serif; font-size:2.4rem; margin-bottom:12px;">Our Team</h2>
+  <div class="gold-line" style="margin:0 auto;"></div>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=400" alt="Sous Chef"/>
+      <div class="team-card-info">
+        <h4>Meera Joshi</h4>
+        <p>Sous Chef</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=400" alt="Pastry Chef"/>
+      <div class="team-card-info">
+        <h4>Rahul Desai</h4>
+        <p>Pastry Chef</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="Manager"/>
+      <div class="team-card-info">
+        <h4>Nisha Patel</h4>
+        <p>General Manager</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards">
+  <h2>Recognition & Awards</h2>
+  <div class="awards-grid">
+    <div class="award-item"><h4>5</h4><p>Times Food Awards</p></div>
+    <div class="award-item"><h4>#1</h4><p>Best Fusion, Gujarat 2024</p></div>
+    <div class="award-item"><h4>4.9</h4><p>Average Guest Rating</p></div>
+    <div class="award-item"><h4>12K+</h4><p>Happy Guests Served</p></div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="nav-logo">DineDistinct</a>
+  <p>© 2025 DineDistinct. Gujarat, India.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="reservationModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <p class="section-tag-m">Reservations</p>
+    <h3>Reserve Your Table</h3>
+    <div class="gl"></div>
+    <div class="form-row">
+      <div class="form-group"><label>First Name</label><input type="text" placeholder="Rohan"/></div>
+      <div class="form-group"><label>Last Name</label><input type="text" placeholder="Shah"/></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Date</label><input type="date"/></div>
+      <div class="form-group"><label>Time</label><select><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>9:00 PM</option></select></div>
+    </div>
+    <div class="form-group"><label>Guests</label><select><option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5+ Guests</option></select></div>
+    <div class="form-group"><label>Special Requests</label><textarea rows="3" placeholder="Dietary requirements, occasion..."></textarea></div>
+    <button class="btn-gold" style="width:100%;" onclick="submitReservation()">Confirm Reservation</button>
+  </div>
+</div>
+
+<script>
+  function openModal() { document.getElementById('reservationModal').classList.add('active'); document.body.style.overflow='hidden'; }
+  function closeModal() { document.getElementById('reservationModal').classList.remove('active'); document.body.style.overflow=''; }
+  document.getElementById('reservationModal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+  function submitReservation() { alert('Thank you! Your reservation has been received.'); closeModal(); }
+</script>
+</body>
+</html>
